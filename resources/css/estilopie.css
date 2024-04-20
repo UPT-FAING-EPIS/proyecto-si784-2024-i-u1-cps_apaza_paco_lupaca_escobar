@@ -1,0 +1,17 @@
+footer{ 
+margin: auto; 
+width: 90%; 
+height: auto; 
+background: #f57337; 
+text-decoration: none;
+}
+#barrapie{ 
+margin: auto; 
+width: 60%; 
+height: auto; 
+font-family: Verdana, Geneva, Tahoma, sans-serif; 
+font-size: 5m; 
+text-align: center; 
+padding: 10px;
+color: #ffffff; 
+}
