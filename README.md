@@ -1,6 +1,6 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/hdquHjtS)
 
-Proyecto Sistema de seguimiento y control para parqueadores “ParkAssist”
+## **Proyecto de agenda virtual para la I.E.P. Steve Jobs**
 
 Integrantes: 
 - Edward Hernan Apaza Mamani  2018060915
@@ -44,6 +44,8 @@ Diagrama de componentes
 | **Flujo alternativo 1** | Si no se selecciona el grado, la sección o la fecha, el sistema se quedará en la misma página de creación. |
 | **Postcondición** | El sistema mostrará los datos de los estudiantes para poder tomar la asistencia. |
 
+---
+
 | Caso de Uso | Visualizar registro de asistencia /CU-2 |
 | --- | --- |
 | **Actor** | Personal administrativo |
@@ -52,6 +54,8 @@ Diagrama de componentes
 | **Flujo Normal** | 1. El personal administrativo, estando en la interfaz principal, cliquea en la sección asistencias. 2. El sistema muestra la página de asistencias de los salones. 3. El personal elige la sección en la cual desea visualizar las asistencias. 4. El sistema muestra el registro de asistencias de aquella sección. |
 | **Flujo alternativo 1** | Si no se selecciona la sección, el sistema se quedará en la misma página de asistencias. |
 | **Postcondición** | El sistema mostrará el registro de asistencia de dicha sección. |
+
+---
 
 | Caso de Uso | Actualizar la asistencia /CU-3 |
 | --- | --- |
@@ -62,6 +66,8 @@ Diagrama de componentes
 | **Flujo alternativo 1** | Si no se selecciona la sección, el sistema se quedará en la misma página de asistencias. |
 | **Postcondición** | El sistema mostrará el registro de asistencia de dicha sección. |
 
+---
+
 | Caso de Uso | Crear comunicado /CU-4 |
 | --- | --- |
 | **Actor** | Personal administrativo |
@@ -70,6 +76,8 @@ Diagrama de componentes
 | **Flujo Normal** | 1. El personal administrativo, estando en la interfaz principal, cliquea en la sección comunicados. 2. El sistema muestra la página de comunicados. 3. El personal cliquea en el botón de comunicado institucional. 4. El sistema muestra la página para crear un nuevo comunicado institucional. 5. El personal redacta el comunicado y le da al botón de Publicar. 6. El sistema creará el comunicado institucional. |
 | **Flujo alternativo 1** | Si no se redacta ningún comunicado, el sistema se quedará en la misma página de creación. |
 | **Postcondición** | El sistema mostrará a todos los usuarios el comunicado que se ha publicado. |
+
+---
 
 | Caso de Uso | Visualizar comunicado /CU-5 |
 | --- | --- |
@@ -80,6 +88,8 @@ Diagrama de componentes
 | **Flujo alternativo 1** | Si no se selecciona la opción, el sistema se quedará en la misma página de comunicados. |
 | **Postcondición** | El sistema mostrará todos los comunicados. |
 
+---
+
 | Caso de Uso | Actualizar comunicado /CU-6 |
 | --- | --- |
 | **Actor** | Personal administrativo |
@@ -87,6 +97,8 @@ Diagrama de componentes
 | **Precondiciones** | Haber iniciado sesión. |
 | **Flujo Normal** | 1. El personal administrativo, estando en la interfaz principal, cliquea en la sección comunicados. 2. El sistema muestra la página de comunicados. 3. El personal clickea en mostrar todos los comunicados. 4. El sistema muestra todos los comunicados que se han publicado. 5. El personal selecciona en el botón modificar del comunicado seleccionado. 6. El sistema permite modificar el comunicado seleccionado. |
 | **Postcondición** | El sistema modificará el comunicado seleccionado. |
+
+---
 
 | Caso de Uso | Agregar actividad en calendario /CU-7 |
 | --- | --- |
@@ -97,6 +109,8 @@ Diagrama de componentes
 | **Flujo alternativo 1** | Si no se redacta ninguna actividad, el sistema se quedará en la misma página de creación. |
 | **Postcondición** | El sistema mostrará a todos los usuarios la actividad creada en el calendario. |
 
+---
+
 | Caso de Uso | Visualizar actividades del calendario /CU-8 |
 | --- | --- |
 | **Actor** | Personal administrativo |
@@ -104,6 +118,8 @@ Diagrama de componentes
 | **Precondiciones** | Haber iniciado sesión. |
 | **Flujo Normal** | 1. El personal administrativo, estando en la interfaz principal, cliquea en el calendario. 2. El sistema muestra la página del calendario, con las actividades. |
 | **Postcondición** | El sistema mostrará todos los comunicados en el calendario. |
+
+---
 
 | Caso de Uso | Actualizar actividades del calendario /CU-9 |
 | --- | --- |
