@@ -29,6 +29,13 @@ Diagrama de componentes
 
 ![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/5b8033ed-ed04-4c64-bc1b-f21dff039a37)
 
+Diagrama de despliegue
+
+![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/c441c7f7-82ff-4881-9cb7-6b57e66242f9)
+
+Diagrama de base de datos
+
+![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/994234c0-e6e6-42c9-9653-3c3ec4fb7008)
 
 
 ## Escenarios de Caso de Uso (Narrativa)
