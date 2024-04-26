@@ -2,78 +2,113 @@
 
 Proyecto Sistema de seguimiento y control para parqueadores “ParkAssist”
 
-integrantes: 
-Edward Hernan Apaza Mamani 2018060915
-Ronal Daniel Lupaca Mamani 2020067146
-Carlos Andrés Escobar Rejas 2021070016
-Aarón Pedro Paco Ramos 2018000654
+Integrantes: 
+- Edward Hernan Apaza Mamani  2018060915
+
+- Ronal Daniel Lupaca Mamani  2020067146
+
+- Carlos Andrés Escobar Rejas 2021070016
+
+- Aarón Pedro Paco Ramos 2018000654
 
 
 
 Diagrama de Clases
-![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/103132465/b2549729-1d57-4831-99a4-e9511681d963)
 
+![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/8a24e33b-00ee-4419-9b94-8e0d699052e6)
 
 Diagrama de paquetes
-![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/103132465/31a0b152-2f4e-48f6-a2e7-d49c2cb50fff)
+
+![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/41eb01d0-054f-4ea6-9e08-d3603c06a598)
 
 Diagrama de Casos de Uso
-![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/103132465/be013e26-495c-45ff-a100-fe38fa2c6165)
+
+![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/ccd6d150-5472-4195-a155-09b1bb2c3971)
+
+Diagrama de componentes
+
+![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/5b8033ed-ed04-4c64-bc1b-f21dff039a37)
 
 
 
 ## Escenarios de Caso de Uso (Narrativa)
 
-## Caso de Uso: Iniciar Sesión (CU01)
+# Casos de Uso
 
-| Caso de Uso | Iniciar Sesión |
+| Caso de Uso | Crear registro de asistencia /CU-1 |
 | --- | --- |
-| Actores | Administrador, Empleado |
-| Descripción | Este caso de uso describe el proceso de inicio de sesión para los usuarios del sistema, ya sea administrador o empleado. |
-| Precondiciones | El usuario tiene credenciales válidas para iniciar sesión. |
-| Flujo Normal | 1. El actor (administrador o empleado) ingresa al sistema.2. El sistema muestra la interfaz de inicio de sesión. 3. El actor ingresa su nombre de usuario y contraseña. 4. El actor confirma la acción de inicio de sesión. 5. El sistema verifica las credenciales del usuario. 6. Si las credenciales son válidas, el sistema autentica al usuario y muestra el menú correspondiente (administrador o empleado).|
+| **Actor** | Personal administrativo |
+| **Descripción** | El personal puede crear el registro de asistencia. |
+| **Precondiciones** | Haber iniciado sesión. |
+| **Flujo Normal** | 1. El personal administrativo, estando en la interfaz principal, cliquea en la sección asistencias. 2. El sistema muestra la página de asistencias de los salones. 3. El personal cliquea en el botón de crear nuevo registro de asistencias. 4. El sistema muestra la página para crear un nuevo registro de asistencia. 5. El personal selecciona el grado, sección y la fecha y le da al botón de crear registro. 6. El sistema creará un registro con los datos especificados. |
+| **Flujo alternativo 1** | Si no se selecciona el grado, la sección o la fecha, el sistema se quedará en la misma página de creación. |
+| **Postcondición** | El sistema mostrará los datos de los estudiantes para poder tomar la asistencia. |
 
-## Caso de Uso: Registrar Usuario (CU02)
-
-| Caso de Uso | Registrar Usuario |
+| Caso de Uso | Visualizar registro de asistencia /CU-2 |
 | --- | --- |
-| Actores | Administrador |
-| Descripción | Este caso de uso describe la funcionalidad que permite a un administrador registrar nuevos usuarios en el sistema, asignándoles roles de empleado o administrador. |
-| Precondiciones | El administrador ha iniciado sesión en el sistema. |
-| Flujo Normal | 1. El administrador selecciona la opción "Registrar Usuario" desde la opción del dashboard. 2. El sistema muestra el formulario de registro de usuario. 3. El administrador ingresa la información requerida, incluyendo nombre, apellido, usuario, contraseña y selecciona el rol (empleado o administrador). 4. El administrador confirma la acción de registro. 5. El sistema valida la información ingresada. 6. El sistema almacena la información del nuevo usuario en la base de datos. 7. El sistema notifica al administrador sobre el éxito del registro. |
+| **Actor** | Personal administrativo |
+| **Descripción** | El personal puede visualizar los registros de asistencia. |
+| **Precondiciones** | Haber iniciado sesión. |
+| **Flujo Normal** | 1. El personal administrativo, estando en la interfaz principal, cliquea en la sección asistencias. 2. El sistema muestra la página de asistencias de los salones. 3. El personal elige la sección en la cual desea visualizar las asistencias. 4. El sistema muestra el registro de asistencias de aquella sección. |
+| **Flujo alternativo 1** | Si no se selecciona la sección, el sistema se quedará en la misma página de asistencias. |
+| **Postcondición** | El sistema mostrará el registro de asistencia de dicha sección. |
 
-## Caso de Uso: Listar Usuarios (CU03)
-
-| Caso de Uso | Listar Usuarios |
+| Caso de Uso | Actualizar la asistencia /CU-3 |
 | --- | --- |
-| Actores | Administrador |
-| Descripción | Este caso de uso describe la funcionalidad que permite a un administrador listar y gestionar los usuarios registrados en el sistema. |
-| Precondiciones | El administrador ha iniciado sesión en el sistema. |
-| Flujo Normal | 1. El administrador selecciona la opción "Listar Usuarios" desde el dashboard. 2. El sistema recopila la lista de usuarios registrados. 3. El sistema presenta la lista de usuarios con sus datos respectivos (nombre, apellido, usuario y rol) en la interfaz. 4. El administrador puede realizar acciones como buscar, modificar o eliminar usuarios en la lista. |
+| **Actor** | Personal administrativo |
+| **Descripción** | El personal puede actualizar los registros de asistencia. |
+| **Precondiciones** | Haber iniciado sesión. |
+| **Flujo Normal** | 1. El personal administrativo, estando en la interfaz principal, cliquea en la sección asistencias. 2. El sistema muestra la página de asistencias de los salones. 3. El personal elige la sección en la cual desea visualizar las asistencias. 4. El sistema muestra el registro de asistencias de aquella sección. |
+| **Flujo alternativo 1** | Si no se selecciona la sección, el sistema se quedará en la misma página de asistencias. |
+| **Postcondición** | El sistema mostrará el registro de asistencia de dicha sección. |
 
-## Caso de Uso: Ingresar Vehículo (CU04)
-
-| Caso de Uso | Ingresar Vehículo |
+| Caso de Uso | Crear comunicado /CU-4 |
 | --- | --- |
-| Actores | Administrador, Empleado |
-| Descripción | Este caso de uso describe la funcionalidad que permite a administradores y empleados registrar la entrada de vehículos al estacionamiento. |
-| Precondiciones | El actor (administrador o empleado) ha iniciado sesión en el sistema. |
-| Flujo Normal | 1. El actor selecciona la opción "Ingresar Vehículo" desde el dashboard. 2. El sistema muestra el formulario de ingreso de vehículo. 3. El actor ingresa la información requerida, incluyendo la placa del vehículo, nombre del propietario y tipo de vehículo (auto o motocicleta). 4. El actor confirma la acción de ingreso del vehículo. 5. El sistema verifica la unicidad de la placa del vehículo. 6. Si la placa es única, el sistema registra la entrada del vehículo y genera un registro con la fecha y hora de ingreso. |
+| **Actor** | Personal administrativo |
+| **Descripción** | El personal puede crear un comunicado institucional. |
+| **Precondiciones** | Haber iniciado sesión. |
+| **Flujo Normal** | 1. El personal administrativo, estando en la interfaz principal, cliquea en la sección comunicados. 2. El sistema muestra la página de comunicados. 3. El personal cliquea en el botón de comunicado institucional. 4. El sistema muestra la página para crear un nuevo comunicado institucional. 5. El personal redacta el comunicado y le da al botón de Publicar. 6. El sistema creará el comunicado institucional. |
+| **Flujo alternativo 1** | Si no se redacta ningún comunicado, el sistema se quedará en la misma página de creación. |
+| **Postcondición** | El sistema mostrará a todos los usuarios el comunicado que se ha publicado. |
 
-## Caso de Uso: Retirar Vehículo (CU05)
-
-| Caso de Uso | Retirar Vehículo |
+| Caso de Uso | Visualizar comunicado /CU-5 |
 | --- | --- |
-| Actores | Administrador, Empleado |
-| Descripción | Este caso de uso describe la funcionalidad que permite a administradores y empleados registrar la salida de un vehículo del estacionamiento. |
-| Precondiciones | El actor (administrador o empleado) ha iniciado sesión en el sistema y hay al menos un vehículo registrado en el estacionamiento. |
-| Flujo Normal | 1. El actor selecciona la opción "Retirar Vehículo" desde el menú. 2. El sistema muestra el formulario de retiro de vehículo. 3. El actor ingresa la placa del vehículo a retirar. 4. El actor confirma la acción de retirar el vehículo. 5. El sistema verifica la existencia de la placa en el registro de vehículos. 6. Si la placa existe, el sistema calcula la duración del estacionamiento y genera un registro con la fecha y hora de salida. 7. El sistema libera el espacio del parqueadero ocupado por el vehículo retirado. |
+| **Actor** | Personal administrativo |
+| **Descripción** | El personal puede visualizar los comunicados. |
+| **Precondiciones** | Haber iniciado sesión. |
+| **Flujo Normal** | 1. El personal administrativo, estando en la interfaz principal, cliquea en la sección comunicados. 2. El sistema muestra la página de comunicados. 3. El personal clickea en mostrar todos los comunicados. 4. El sistema muestra todos los comunicados que se han publicado. |
+| **Flujo alternativo 1** | Si no se selecciona la opción, el sistema se quedará en la misma página de comunicados. |
+| **Postcondición** | El sistema mostrará todos los comunicados. |
 
-## Caso de Uso: Listar Vehículo (CU06)
-
-| Caso de Uso | Listar Vehículo |
+| Caso de Uso | Actualizar comunicado /CU-6 |
 | --- | --- |
-| Actores | Administrador, Empleado |
-| Descripción | Este caso de uso describe la funcionalidad que permite a administradores y empleados visualizar una lista de los vehículos actualmente estacionados en el parqueadero. |
-| Precondiciones | El actor (administrador o empleado) ha iniciado sesión en el sistema y hay al menos un vehículo registrado en el estacionamiento. |
-| Flujo Normal |  1. El actor selecciona la opción "Listar Vehículos" desde el menú. 2. El sistema recopila la lista de vehículos actualmente estacionados. 3. El sistema presenta la lista de vehículos con sus datos respectivos (placa, nombre del propietario, tipo de vehículo, fecha y hora de entrada) en la interfaz. 4. El actor puede realizar acciones adicionales, como buscar o filtrar los vehículos en la lista. |
+| **Actor** | Personal administrativo |
+| **Descripción** | El personal puede modificar los comunicados. |
+| **Precondiciones** | Haber iniciado sesión. |
+| **Flujo Normal** | 1. El personal administrativo, estando en la interfaz principal, cliquea en la sección comunicados. 2. El sistema muestra la página de comunicados. 3. El personal clickea en mostrar todos los comunicados. 4. El sistema muestra todos los comunicados que se han publicado. 5. El personal selecciona en el botón modificar del comunicado seleccionado. 6. El sistema permite modificar el comunicado seleccionado. |
+| **Postcondición** | El sistema modificará el comunicado seleccionado. |
+
+| Caso de Uso | Agregar actividad en calendario /CU-7 |
+| --- | --- |
+| **Actor** | Personal administrativo |
+| **Descripción** | El personal puede crear una actividad en el calendario. |
+| **Precondiciones** | Haber iniciado sesión. |
+| **Flujo Normal** | 1. El personal administrativo, estando en la interfaz principal, cliquea en el calendario. 2. El sistema muestra la página del calendario. 3. El personal cliquea en el botón de crear actividad. 4. El sistema muestra la página para crear una actividad en el calendario. 5. El personal crea una actividad y le da al botón de Publicar. 6. El sistema publicará la actividad en el calendario. |
+| **Flujo alternativo 1** | Si no se redacta ninguna actividad, el sistema se quedará en la misma página de creación. |
+| **Postcondición** | El sistema mostrará a todos los usuarios la actividad creada en el calendario. |
+
+| Caso de Uso | Visualizar actividades del calendario /CU-8 |
+| --- | --- |
+| **Actor** | Personal administrativo |
+| **Descripción** | El personal puede visualizar las actividades en el calendario. |
+| **Precondiciones** | Haber iniciado sesión. |
+| **Flujo Normal** | 1. El personal administrativo, estando en la interfaz principal, cliquea en el calendario. 2. El sistema muestra la página del calendario, con las actividades. |
+| **Postcondición** | El sistema mostrará todos los comunicados en el calendario. |
+
+| Caso de Uso | Actualizar actividades del calendario /CU-9 |
+| --- | --- |
+| **Actor** | Personal administrativo |
+| **Descripción** | El personal puede modificar las actividades creadas en el calendario. |
+| **Precondiciones** | Haber iniciado sesión. |
+| **Flujo Normal** | 1. El personal administrativo, estando en la interfaz principal, cliquea en la sección calendario. 2. El sistema muestra la página de actividades del calendario. 3. El personal clickea en mostrar todos las actividades del calendario. 4. El sistema muestra todas las actividades que se han publicado. 5. El personal selecciona en el botón actualizar del comunicado seleccionado. 6. El sistema permite modificar el comunicado seleccionado. |
+| **Postcondición** | El sistema modificará el comunicado seleccionado. |
