@@ -15,11 +15,11 @@ Integrantes:
 
 Diagrama de Clases
 
-![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/8a24e33b-00ee-4419-9b94-8e0d699052e6)
+![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/102f9313-956a-4e9b-a705-5a610966f178)
 
 Diagrama de paquetes
 
-![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/41eb01d0-054f-4ea6-9e08-d3603c06a598)
+![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/1d44e525-112b-4449-b576-1629ad5d2ed5)
 
 Diagrama de Casos de Uso
 
@@ -36,7 +36,7 @@ Diagrama de despliegue
 
 Diagrama de base de datos
 
-![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/994234c0-e6e6-42c9-9653-3c3ec4fb7008)
+![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/60f830dd-be80-4624-b363-30a630e55f74)
 
 
 ## Escenarios de Caso de Uso (Narrativa)
