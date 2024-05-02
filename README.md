@@ -32,7 +32,7 @@ Diagrama de componentes
 
 Diagrama de despliegue
 
-![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/c441c7f7-82ff-4881-9cb7-6b57e66242f9)
+![Diagrama2](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112985123/26b00966-2b8d-45eb-aa8a-c5c1c46e4364)
 
 Diagrama de base de datos
 
