@@ -27,7 +27,8 @@ Diagrama de Casos de Uso
 
 Diagrama de componentes
 
-![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/5b8033ed-ed04-4c64-bc1b-f21dff039a37)
+![Diagrama1](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112985123/fc3c7243-12fe-433d-be22-867fd28eef74)
+
 
 Diagrama de despliegue
 
