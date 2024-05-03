@@ -15,7 +15,7 @@ Integrantes:
 
 Diagrama de Clases
 
-![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/102f9313-956a-4e9b-a705-5a610966f178)
+![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/4a00af8a-641d-4090-86ba-c92d68d5310b)
 
 Diagrama de paquetes
 
