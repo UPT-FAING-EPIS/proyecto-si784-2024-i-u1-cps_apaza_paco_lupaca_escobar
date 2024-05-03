@@ -1,6 +1,45 @@
-<!-- Empezado por Renato Chambilla Mardinez -->
 <?php 
 include("../conexion.php");
+
+// Asegúrate de que conectarse() devuelve un objeto mysqli válido.
+$link = conectarse();
+
+// Comprobar si se enviaron los datos requeridos por el formulario.
+if (isset($_POST['id'], $_POST['observa'])) {
+    $id = $_POST['id'];
+    $observa = $_POST['observa'];
+
+    // Preparar la consulta SQL para evitar inyección SQL.
+    $stmt = $link->prepare("UPDATE alumno SET observa = ? WHERE codalumno = ?");
+
+    // Comprobar si la preparación fue exitosa.
+    if ($stmt === false) {
+        die('Error al preparar la consulta: ' . htmlspecialchars($link->error));
+    }
+
+    // Vincular los parámetros a la sentencia preparada.
+    $stmt->bind_param("ss", $observa, $id);
+
+    // Ejecutar la sentencia.
+    $stmt->execute();
+
+    // Comprobar si hubo errores durante la ejecución.
+    if ($stmt->error) {
+        die('Error al ejecutar la sentencia: ' . htmlspecialchars($stmt->error));
+    }
+
+    // Cerrar la sentencia y la conexión.
+    $stmt->close();
+    $link->close();
+
+    $mensaje = 'El registro del comunicado fue realizado con éxito';
+    $btnMensaje = 'Retornar';
+    $btnHref = '../vista/docente/formA_agregarcomunicado.php';
+} else {
+    $mensaje = 'Error al insertar el registro de comunicado';
+    $btnMensaje = 'Retornar';
+    $btnHref = '../vista/docente/formA_agregarcomunicado.php';
+}
 ?>
 <!doctype html>
 <html>
@@ -37,34 +76,14 @@ include("../conexion.php");
             }
         </style>
     </head>
-<body>
-    <div class="container">
-        <div class="card">
-        <?php         
-        $link = conectarse();
-        $id=$_POST['id'];
-        $observa=$_POST['observa'];
-        $query = "update alumno set  observa='$observa' where codalumno='$id'";
-        $rs = mysqli_query($link,$query);
-        mysqli_close($link);        
-        if($rs==1)
-        if ($rs == 1) {
-            echo '<div class="h1 font-weight-bold" role="alert">';
-            echo 'El registro del comunicado fue realizado con éxito';
-            echo '</div>';
-            echo '<hr>';
-            echo '<a class="btn btn-primary font-weight-bold" href="../vista/docente/formA_agregarcomunicado.php">Retornar</a>';
-        } else {
-            echo '<div class="alert alert-danger" role="alert">';
-            echo 'Error al insertar el registro de comunicado';
-            echo '</div>';
-            echo '<br>';
-            echo '<br>';
-            echo '<a class="btn btn-primary font-weight-bold" href="../vista/docente/formA_agregarcomunicado.php">Retornar</a>';
-        }
-        ?>
-        </div>    
-    </div>
-</body>
+    <body>
+        <div class="container">
+            <div class="card">
+                <div class="alert <?php echo ($stmt->affected_rows > 0) ? 'alert-success' : 'alert-danger'; ?>" role="alert">
+                    <?php echo $mensaje; ?>
+                </div>
+                <a class="btn btn-primary font-weight-bold" href="<?php echo $btnHref; ?>"><?php echo $btnMensaje; ?></a>
+            </div>    
+        </div>
+    </body>
 </html>
-<!-- Terminado por Renato Chambilla Mardinez -->

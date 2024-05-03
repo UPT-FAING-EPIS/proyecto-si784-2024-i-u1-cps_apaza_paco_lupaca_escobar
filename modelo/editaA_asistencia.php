@@ -1,4 +1,50 @@
-<!-- Empezado por Renato Chambilla Mardinez -->
+<?php
+// Incluir módulo de conexión
+include("../conexion.php");
+
+// Asegurarse de que conectarse() devuelve un objeto mysqli válido.
+$link = conectarse();
+
+// Comprobar si se enviaron los datos requeridos por el formulario.
+if (isset($_POST['id'], $_POST['nombre'], $_POST['apellido'], $_POST['fecha'], $_POST['estado'])) {
+    $usuario = $_POST['id'];
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $fecha = $_POST['fecha'];
+    $idestado = $_POST['estado'];
+
+    // Preparar la consulta SQL para evitar inyección SQL.
+    $stmt = $link->prepare("INSERT INTO `asistencia` (`fkcodalumno`, `fknomalumno`, `fkapealumno`, `fecha`, `estado`) VALUES (?, ?, ?, ?, ?)");
+
+    // Comprobar si la preparación fue exitosa.
+    if ($stmt === false) {
+        die('Error al preparar la consulta: ' . htmlspecialchars($link->error));
+    }
+
+    // Vincular los parámetros a la sentencia preparada.
+    $stmt->bind_param("ssss", $usuario, $nombre, $apellido, $fecha, $idestado);
+
+    // Ejecutar la sentencia.
+    $stmt->execute();
+
+    // Comprobar si hubo errores durante la ejecución.
+    if ($stmt->error) {
+        die('Error al ejecutar la sentencia: ' . htmlspecialchars($stmt->error));
+    }
+
+    // Cerrar la sentencia y la conexión.
+    $stmt->close();
+    $link->close();
+
+    $mensaje = 'La asistencia fue tomada con éxito';
+    $btnMensaje = 'Retornar';
+    $btnHref = '../vista/docente/formA_asistencia.php';
+} else {
+    $mensaje = 'Error al tomar asistencia';
+    $btnMensaje = 'Retornar';
+    $btnHref = '../vista/docente/index.php';
+}
+?>
 <!doctype html>
 <html>
     <head>
@@ -37,38 +83,11 @@
     <body>
         <div class="container">
             <div class="card">
-                <?php
-                //incluir modulo de conexion 
-                include("../conexion.php");
-
-                $link=conectarse(); 
-                $usuario=$_POST['id']; 
-                $nombre=$_POST['nombre']; 
-                $apellido=$_POST['apellido']; 
-                $fecha=$_POST['fecha']; 
-                if (isset($_POST['estado'])) {
-                    $idestado = $_POST['estado'];
-                }
-                $orden="INSERT INTO `asistencia` (`fkcodalumno`, `fknomalumno`, `fkapealumno`, `fecha`, `estado`) VALUES ('$usuario', '$nombre', '$apellido', '$fecha', '$idestado')";
-                $rs=mysqli_query($link, $orden) or die("Fallo en la consulta"); 
-                if ($rs == 1) {
-                    echo '<div class="h1 font-weight-bold" role="alert">';
-                    echo 'La asistencia fue tomada con éxito';
-                    echo '</div>';
-                    echo '<hr>';
-                    echo '<a class="btn btn-primary font-weight-bold" href="../vista/docente/formA_asistencia.php">Retornar</a>';
-                } else {
-                    echo '<div class="alert alert-danger" role="alert">';
-                    echo 'Error al tomar asistencia';
-                    echo '</div>';
-                    echo '<br>';
-                    echo '<br>';
-                    echo '<a class="btn btn-primary font-weight-bold" href="../vista/docente/index.php">Retornar</a>';
-                }
-                mysqli_close($link); 
-                ?>
+                <div class="alert <?php echo ($stmt->affected_rows > 0) ? 'alert-success' : 'alert-danger'; ?>" role="alert">
+                    <?php echo $mensaje; ?>
+                </div>
+                <a class="btn btn-primary font-weight-bold" href="<?php echo $btnHref; ?>"><?php echo $btnMensaje; ?></a>
             </div>    
-    </div>
-</body>
+        </div>
+    </body>
 </html>
-<!-- Terminado por Renato Chambilla Mardinez -->

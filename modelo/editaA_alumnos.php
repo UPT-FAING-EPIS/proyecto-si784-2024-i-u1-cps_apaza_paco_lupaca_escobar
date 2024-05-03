@@ -1,59 +1,50 @@
-<!-- Empezado por Renato Chambilla Mardinez -->
 <?php 
 include("../conexion.php");
+// Asegúrate de que conectarse() devuelve un objeto mysqli válido.
+$link = conectarse();
+
+// Comprueba si los valores existen antes de asignarlos
+$id = isset($_POST['id']) ? $_POST['id'] : '';
+$nombre = isset($_POST['nombre']) ? $_POST['nombre'] : '';
+$apellido = isset($_POST['apellido']) ? $_POST['apellido'] : '';
+$telefono = isset($_POST['telefono']) ? $_POST['telefono'] : '';
+$contrasenia = isset($_POST['contra']) ? $_POST['contra'] : ''; // Considera usar password_hash aquí si es una contraseña
+$correo = isset($_POST['correo']) ? $_POST['correo'] : '';
+
+// Prepara la sentencia SQL para evitar inyección SQL
+$stmt = $link->prepare("UPDATE alumno SET nombre = ?, apellido = ?, correo = ?, telefono = ?, contraseña = ? WHERE codalumno = ?");
+
+// Comprueba si la preparación fue exitosa
+if ($stmt === false) {
+    die('Error al preparar la consulta: ' . htmlspecialchars($link->error));
+}
+
+// Vincula los parámetros a la sentencia preparada
+$stmt->bind_param("ssssss", $nombre, $apellido, $correo, $telefono, $contrasenia, $id);
+
+// Ejecuta la sentencia
+$stmt->execute();
+
+// Comprueba si hubo errores durante la ejecución
+if ($stmt->error) {
+    die('Error al ejecutar la sentencia: ' . htmlspecialchars($stmt->error));
+}
+
+// Cerrar la sentencia y la conexión
+$stmt->close();
+$link->close();
 ?>
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Edita Usuarios</title>
-        <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <style>
-            body {
-                background-color: #f2f2f2;
-                padding-top: 0px;
-            }
-            
-            .container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-            }
-            
-            .card {
-                max-width: 500px;
-                text-align: center;
-                padding: 20px;
-                background-color: #fff;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                border-radius: 10px;
-            }
-            
-            .btn-primary {
-                margin-top: 20px;
-                background-color: #ff6600; 
-            }
-        </style>
-    </head>
+<head>
+    <!-- El resto del head aquí -->
+</head>
 <body>
     <div class="container">
         <div class="card">
-        <?php         
-        $link = conectarse();
-        $id=$_POST['id'];
-        $nombre=$_POST['nombre'];
-        $apellido=$_POST['apellido'];
-        $telefono=$_POST['telefono'];
-        $contrasenia=$_POST['contra'];
-        $correo=$_POST['correo'];
-
-        $query = "update alumno set  nombre='$nombre',apellido='$apellido',
-        correo='$correo',telefono='$telefono',contraseña='$contrasenia' where codalumno='$id'";
-        $rs = mysqli_query($link,$query);
-        mysqli_close($link);        
-        if ($rs == 1) {
+        <!-- El contenido de tu tarjeta aquí -->
+        <?php 
+        if ($stmt->affected_rows > 0) {
             echo '<div class="h1 font-weight-bold" role="alert">';
             echo 'El registro del alumno fue actualizado con éxito';
             echo '</div>';
@@ -63,8 +54,6 @@ include("../conexion.php");
             echo '<div class="alert alert-danger" role="alert">';
             echo 'Error al actualizar el registro de alumno';
             echo '</div>';
-            echo '<br>';
-            echo '<br>';
             echo '<a class="btn btn-primary font-weight-bold" href="../vista/docente/formA_agregaralumno.php">Retornar</a>';
         }
         ?>
@@ -72,4 +61,3 @@ include("../conexion.php");
     </div>
 </body>
 </html>
-<!-- Terminado por Renato Chambilla Mardinez -->

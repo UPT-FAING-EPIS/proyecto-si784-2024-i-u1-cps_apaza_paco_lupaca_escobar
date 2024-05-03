@@ -1,10 +1,27 @@
-<!-- Empezado por Rene Poma Manchego -->
 <?php
   require_once('../config.php');
-  $id    		= $_REQUEST['id']; 
+// Recuperar el 'id' del evento de manera segura
+$id = $_REQUEST['id'];
 
-  $sqlDeleteEvento = ("DELETE FROM eventoscalendar WHERE  id='" .$id. "'");
-  $resultProd = mysqli_query($con, $sqlDeleteEvento);
+// Preparar la sentencia SQL para prevenir inyección SQL
+if ($stmt = $con->prepare("DELETE FROM eventoscalendar WHERE id = ?")) {
+    // Vincular el parámetro 'id' a la variable $id
+    $stmt->bind_param("i", $id);
 
+    // Ejecutar la sentencia
+    $stmt->execute();
+
+    // Cerrar la sentencia
+    $stmt->close();
+} else {
+    // Manejar el error de preparación aquí
+    error_log('Error al preparar la sentencia: ' . $con->error);
+}
+
+// Cerrar la conexión a la base de datos
+$con->close();
+
+// Redireccionar al usuario a la página deseada
+header("Location: ./Vindex.php?ea=1");
+exit();
 ?>
-  <!-- Terminado por Rene Poma Manchego -->

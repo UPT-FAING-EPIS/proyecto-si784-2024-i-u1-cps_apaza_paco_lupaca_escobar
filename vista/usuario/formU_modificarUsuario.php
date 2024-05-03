@@ -1,9 +1,8 @@
-<!-- Empezado por Rene Poma Manchego -->
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Mantenimiento Usuarios</title>
+    <title>Edita Usuarios</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -40,35 +39,37 @@
             <?php
             include("../../conexion.php");
             $link = conectarse();
-            $id = $_GET['cod'];
-            $nombre = $_GET['nombre'];
-            $apellido = $_GET['apellido'];
-            $telefono = $_GET['tel'];
-            $contrasenia = $_GET['contra'];
-            $correo = $_GET['email'];
-            $idrol = $_GET['idrol'];
+
+            // Aplicar htmlspecialchars a todas las entradas para prevenir XSS
+            $id = htmlspecialchars($_GET['cod'], ENT_QUOTES, 'UTF-8');
+            $nombre = htmlspecialchars($_GET['nombre'], ENT_QUOTES, 'UTF-8');
+            $apellido = htmlspecialchars($_GET['apellido'], ENT_QUOTES, 'UTF-8');
+            $telefono = htmlspecialchars($_GET['tel'], ENT_QUOTES, 'UTF-8');
+            $contrasenia = htmlspecialchars($_GET['contra'], ENT_QUOTES, 'UTF-8');
+            $correo = htmlspecialchars($_GET['email'], ENT_QUOTES, 'UTF-8');
+            $idrol = htmlspecialchars($_GET['idrol'], ENT_QUOTES, 'UTF-8');
             ?>
             <form method="post" action="../../modelo/editaU_usuarios.php" enctype="multipart/form-data">
                 <h3 class="mb-4">EDITAR USUARIOS</h3>
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
-                    <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo $nombre ?>" />
+                    <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8') ?>" />
                 </div>
                 <div class="form-group">
                     <label for="apellido">Apellidos:</label>
-                    <input type="text" class="form-control" name="apellido" id="apellido" value="<?php echo $apellido ?>" />
+                    <input type="text" class="form-control" name="apellido" id="apellido" value="<?php echo htmlspecialchars($apellido, ENT_QUOTES, 'UTF-8') ?>" />
                 </div>
                 <div class="form-group">
                     <label for="telefono">Telefono:</label>
-                    <input type="text" class="form-control" name="telefono" id="telefono" value="<?php echo $telefono ?>" />
+                    <input type="text" class="form-control" name="telefono" id="telefono" value="<?php echo htmlspecialchars($telefono, ENT_QUOTES, 'UTF-8') ?>" />
                 </div>
                 <div class="form-group">
                     <label for="correo">Correo Electronico:</label>
-                    <input type="text" class="form-control" name="correo" id="correo" value="<?php echo $correo ?>" />
+                    <input type="text" class="form-control" name="correo" id="correo" value="<?php echo htmlspecialchars($correo, ENT_QUOTES, 'UTF-8') ?>" />
                 </div>
                 <div class="form-group">
                     <label for="contra">Contraseña:</label>
-                    <input type="text" class="form-control" name="contra" id="contra" value="<?php echo $contrasenia ?>" />
+                    <input type="text" class="form-control" name="contra" id="contra" value="<?php echo htmlspecialchars($contrasenia, ENT_QUOTES, 'UTF-8') ?>" />
                 </div>
                 <div class="form-group">
                     <label for="idrol">Rol:</label>
@@ -81,7 +82,7 @@
                 <input type="hidden" value="<?= $id ?>" name="id">
             </form>
             <a class="btn btn-secondary mt-3" href="./formU_menu_usuario.php">Volver</a>
-        </article>
+            </article>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -89,4 +90,3 @@
 </body>
 </html>
 
-<!-- Terminado por Rene Poma Manchego -->

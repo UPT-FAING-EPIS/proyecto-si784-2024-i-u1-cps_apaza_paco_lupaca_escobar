@@ -1,13 +1,17 @@
-<!-- Empezado por Rene Poma Manchego -->
 <?php 
 function conectarse()
 {
-if(!($link = mysqli_connect("localhost", "root","", "agenda_jobs")))
-{
-    echo"error conectando a la base de datos."; 
-    exit();
-}
-return $link;
+    // Utiliza la función getenv() para obtener las variables de entorno
+    $host = getenv("localhost");
+    $user = getenv("root");
+    $password = getenv("");
+    $database = getenv("agenda_jobs");
+
+    // Se conecta a la base de datos con las variables de entorno
+    if(!($link = mysqli_connect($host, $user, $password, $database))) {
+        echo "Error conectando a la base de datos."; 
+        exit();
+    }
+    return $link;
 }
 ?>
-<!-- Terminado por Rene Poma Manchego -->

@@ -1,6 +1,5 @@
-<!-- Empezado por Farley Viveros Blanco -->
 <!doctype html>
-<hmtl>
+<html>
 <head>
     <meta charset="utf-8">
     <title>Mantenimiento de asistencia - Agenda Jobs</title>
@@ -33,51 +32,49 @@
             border-color: #545b62;
         }
     </style>
-    </head>
+</head>
 <body>
-        <div class="container">
-            <article>                
-                <?php                
-                include("../../conexion.php");
-                $link = conectarse();                
-                $id=$_GET['cod'];
-                $nombre=$_GET['nombre'];
-                $apellido=$_GET['apellido'];      
-                $estado=" ";
-                ?>                
-                <form method="post" action="../../modelo/editaA_asistencia.php" enctype="multipart/form-data">
-                    <h3 class="mb-4">EDITAR ASISTENCIA</h3>
-                    <div class="form-group">                   
-                        <label for="nombre"> Nombre:</label>
-                        <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo $nombre?>" size="35" />
-                    </div>
-                    <div class="form-group">
-                        <label for="apellido"> Apellidos:</label>
-                        <input type="text" class="form-control" name="apellido" id="apellido" value="<?php echo $apellido?>" size="35" />
-                    </div>
-                    <div class="form-group">
-                        <label for="fecha">  Día: DD/MM/YYYY </label><br>
-                        <input for="fecha" class="form-control" type="date" name="fecha" value=" ">
-                    </div>
-                    <div class="form-group">
+<div class="container">
+        <article>                
+            <?php                
+            include("../../conexion.php");
+            $link = conectarse();                
+            $id = isset($_GET['cod']) ? htmlspecialchars($_GET['cod'], ENT_QUOTES, 'UTF-8') : '';
+            $nombre = isset($_GET['nombre']) ? htmlspecialchars($_GET['nombre'], ENT_QUOTES, 'UTF-8') : '';
+            $apellido = isset($_GET['apellido']) ? htmlspecialchars($_GET['apellido'], ENT_QUOTES, 'UTF-8') : '';
+            $estado = "";
+            ?>                
+            <form method="post" action="../../modelo/editaA_asistencia.php" enctype="multipart/form-data">
+                <h3 class="mb-4">EDITAR ASISTENCIA</h3>
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo $nombre; ?>" size="35" />
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellidos:</label>
+                    <input type="text" class="form-control" name="apellido" id="apellido" value="<?php echo $apellido; ?>" size="35" />
+                </div>
+                <div class="form-group">
+                    <label for="fecha">Día: DD/MM/YYYY</label><br>
+                    <input for="fecha" class="form-control" type="date" name="fecha" value="">
+                </div>
+                <div class="form-group">
                     <label for="asistencia">Asistencia:</label>
-                        <select name="estado" class="form-control" id="">
+                    <select name="estado" class="form-control" id="">
                         <option value="">Seleccione asistencia</option>
-                        <option value="Asiste" <?php if($estado == "Asiste") echo "selected" ?> >Asiste</option>
-                        <option value="Tarde" <?php if($estado == "Tarde") echo "selected" ?>>Tarde</option>
-                        <option value="Falta" <?php if($estado == "Falta") echo "selected" ?>>Falta</option>
+                        <option value="Asiste" <?php if($estado == "Asiste") echo "selected"; ?>>Asiste</option>
+                        <option value="Tarde" <?php if($estado == "Tarde") echo "selected"; ?>>Tarde</option>
+                        <option value="Falta" <?php if($estado == "Falta") echo "selected"; ?>>Falta</option>
                     </select>
-                    </div>
-                    <input type="submit" class="btn btn-primary" value="Actualizar Asistencia"/>
-                    <input type="hidden" value="<?=$id?>" name="id">                    
-                </form>
-                <a class="btn btn-secondary mt-3" href="./index.php">Volver</a> <!--para salir al index principal-->
-            </article>
-        </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Actualizar Asistencia"/>
+                <input type="hidden" value="<?php echo $id; ?>" name="id">                    
+            </form>
+            <a class="btn btn-secondary mt-3" href="./index.php">Volver</a>
+        </article>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </body>
-</hmtl>
-
-<!-- Terminado por Farley Viveros Blanco -->
+</body>
+</html>

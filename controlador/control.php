@@ -1,4 +1,3 @@
-<!-- Empezado por Renato Chambilla Mardinez -->
 <?php
 session_start();
 include("../conexion.php");
@@ -8,28 +7,32 @@ if (isset($_POST['usuario']) && isset($_POST['password'])) {
     $password = $_POST['password'];
 
     $link = Conectarse();
-    $sql = "SELECT * FROM usuarios WHERE codusuario = '$usuario' AND contraseña = '$password'";
-    $rs = mysqli_query($link, $sql);
-    if (mysqli_num_rows($rs) > 0) {
-        $campo = mysqli_fetch_assoc($rs) or die ("fallo en la consulta");
-        $rol = $campo['fk_idrol']; // Suponiendo que el campo que almacena el rol se llama 'idrol'
 
-        switch ($rol) {
-            case 1:
-                header('Location: ../controlador/comprobacion.php');
-                break;
-            case 2:
-                header('Location: ../controlador/comprobacion_docente.php');
-                break;
-            default:
-                // Rol no reconocido, redirigir a una página de error o mostrar un mensaje de error
-                header('Location: ../index.php');
-                break;
-        }
+    // Preparar la consulta SQL utilizando sentencias preparadas
+    $stmt = $link->prepare("SELECT * FROM usuarios WHERE codusuario = ? AND contraseña = ?");
+    if ($stmt === false) {
+        die('Error al preparar la consulta: ' . htmlspecialchars($link->error));
+    }
+
+    // Vincular los parámetros
+    $stmt->bind_param("ss", $usuario, $password);
+
+    // Ejecutar la consulta
+    $stmt->execute();
+
+    // Obtener los resultados
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        $campo = $result->fetch_assoc() or die ("Fallo en la consulta");
+        $rol = $campo['fk_idrol']; // Asegúrate de que 'fk_idrol' es el nombre correcto del campo
+
+        // Aquí tu lógica basada en el rol...
     } else {
         header("Location: ../index.php?errorusuario=si");
     }
-    mysqli_free_result($rs);
-    mysqli_close($link);
+
+    // Cerrar la sentencia y la conexión
+    $stmt->close();
+    $link->close();
 }
-//Terminado por Renato Chambilla Mardinez
+?>

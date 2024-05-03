@@ -1,4 +1,3 @@
-<!-- Empezado por Farley Viveros Blanco -->
 <!doctype html>
 <hmtl>
 <head>
@@ -48,29 +47,29 @@
                 $correo=$_GET['email'];                        
                 ?>                
                 <form method="post" action="../../modelo/editaA_alumnos.php" enctype="multipart/form-data">
-                    <h3 class="mb-4">EDITAR USUARIOS</h3>
-                    <div class="form-group">                   
-                        <label for="nombre"> Nombre:</label>
-                        <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo $nombre?>" size="35"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="apellido"> Apellidos:</label>
-                        <input type="text" class="form-control" name="apellido" id="apellido" value="<?php echo $apellido?>" size="35"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="telefono"> Telefono:</label>
-                        <input type="text" class="form-control" name="telefono" id="telefono" value="<?php echo $telefono?>" size="35"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="correo"> Correo Electronico:</label>
-                        <input type="text" class="form-control" name="correo" id="correo" value="<?php echo $correo?>" size="35"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="contra"> Contraseña:</label>
-                        <input type="text" class="form-control" name="contra" id="contra" value="<?php echo $contrasenia?>" size="35"/>
-                    </div>                
-                    <input type="submit" class="btn btn-primary" value="Actualizar Alumno"/>
-                    <input type="hidden" value="<?=$id?>" name="id">                    
+                <h3 class="mb-4">EDITAR USUARIOS</h3>
+                <div class="form-group">                   
+                    <label for="nombre"> Nombre:</label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8');?>" size="35"/>
+                </div>
+                <div class="form-group">
+                    <label for="apellido"> Apellidos:</label>
+                    <input type="text" class="form-control" name="apellido" id="apellido" value="<?php echo htmlspecialchars($apellido, ENT_QUOTES, 'UTF-8');?>" size="35"/>
+                </div>
+                <div class="form-group">
+                    <label for="telefono"> Telefono:</label>
+                    <input type="text" class="form-control" name="telefono" id="telefono" value="<?php echo htmlspecialchars($telefono, ENT_QUOTES, 'UTF-8');?>" size="35"/>
+                </div>
+                <div class="form-group">
+                    <label for="correo"> Correo Electronico:</label>
+                    <input type="text" class="form-control" name="correo" id="correo" value="<?php echo htmlspecialchars($correo, ENT_QUOTES, 'UTF-8');?>" size="35"/>
+                </div>
+                <div class="form-group">
+                    <label for="contra"> Contraseña:</label>
+                    <input type="text" class="form-control" name="contra" id="contra" value="<?php echo htmlspecialchars($contrasenia, ENT_QUOTES, 'UTF-8');?>" size="35"/>
+                </div>                
+                <input type="submit" class="btn btn-primary" value="Actualizar Alumno"/>
+                <input type="hidden" value="<?php echo htmlspecialchars($id, ENT_QUOTES, 'UTF-8');?>" name="id">                    
                 </form>
                 <a class="btn btn-secondary mt-3" href="./menu_alumno.php">Volver</a> <!--para salir al index principal-->
             </article>
@@ -80,5 +79,3 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
 </hmtl>
-
-<!-- Terminado por Farley Viveros Blanco -->

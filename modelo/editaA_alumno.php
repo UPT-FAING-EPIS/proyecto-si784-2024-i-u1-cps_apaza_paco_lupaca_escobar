@@ -1,4 +1,3 @@
-<!-- Empezado por Renato Chambilla Mardinez -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,17 +39,20 @@
             include("../conexion.php");
             $link = conectarse();
 
+            // Asumiendo que la contraseña se almacenará usando una función de hash segura como password_hash()
             $usuario = $_POST['usuario'];
             $nombre = $_POST['nombre'];
             $apellido = $_POST['apellido'];
             $email = $_POST['email'];
             $telefono = $_POST['telefono'];
-            $clave = $_POST['clave'];
+            $clave = password_hash($_POST['clave'], PASSWORD_DEFAULT); // Utilizar password_hash()
 
-            $orden = "INSERT INTO `alumno` (`codalumno`, `nombre`, `apellido`, `correo`, `telefono`, `contraseña`) VALUES ('$usuario', '$nombre', '$apellido', '$email', '$telefono', '$clave')";
-            $rs = mysqli_query($link, $orden) or die("Fallo en la consulta");
+            // Preparar la sentencia SQL para evitar inyección SQL
+            $stmt = $link->prepare("INSERT INTO `alumno` (`codalumno`, `nombre`, `apellido`, `correo`, `telefono`, `contraseña`) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssss", $usuario, $nombre, $apellido, $email, $telefono, $clave);
+            $result = $stmt->execute();
 
-            if ($rs == 1) {
+            if ($result) {
                 echo '<div class="h1 font-weight-bold" role="alert">';
                 echo 'El registro del nuevo alumno fue insertado con éxito';
                 echo '</div>';
@@ -58,18 +60,16 @@
                 echo '<a class="btn btn-primary font-weight-bold" href="../vista/docente/menu_alumno.php">Retornar</a>';
             } else {
                 echo '<div class="alert alert-danger" role="alert">';
-                echo 'Error al insertar el registro de nuevo alumno';
+                echo 'Error al insertar el registro de nuevo alumno: ' . htmlspecialchars($stmt->error);
                 echo '</div>';
-                echo '<br>';
-                echo '<br>';
                 echo '<a class="btn btn-primary font-weight-bold" href="../vista/docente/formA_agregaralumno.php">Retornar</a>';
             }
 
-            mysqli_close($link);
+            $stmt->close();
+            $link->close();
             ?>
         </div>
     </div>  
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-<!-- Terminado por Renato Chambilla Mardinez -->
