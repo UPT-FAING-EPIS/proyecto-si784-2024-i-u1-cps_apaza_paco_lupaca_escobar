@@ -15,7 +15,8 @@ Integrantes:
 
 Diagrama de Clases
 
-![image](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112984449/4a00af8a-641d-4090-86ba-c92d68d5310b)
+![sadas](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112985123/506c3094-d6f4-4aba-b765-f1518e5f54d5)
+
 
 Diagrama de paquetes
 
@@ -27,7 +28,7 @@ Diagrama de Casos de Uso
 
 Diagrama de componentes
 
-![Diagrama1](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112985123/fc3c7243-12fe-433d-be22-867fd28eef74)
+![2](https://github.com/UPT-FAING-EPIS/proyecto-si784-2024-i-u1-cps_apaza_paco_lupaca_escobar/assets/112985123/55d1a67c-22f5-45ad-b405-dbd659f3dffa)
 
 
 Diagrama de despliegue
